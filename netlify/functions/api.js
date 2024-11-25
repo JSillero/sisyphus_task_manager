@@ -72,12 +72,11 @@ const startServers = async () => {
         await mongoose.connect(process.env.MONGODB_URI);
         console.log("Database connection established");
 
-        app.listen(port, () => {
-            console.log(`🚀 Express api lab on ${port}`)
-        })
+
 
     } catch (error) {
         console.log(error);
     }
 }
 startServers();
+module.exports.handler = serverless(app)
