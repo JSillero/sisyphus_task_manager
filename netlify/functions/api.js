@@ -47,6 +47,7 @@ app.use(
 
 //adds the user session to all views
 app.use(passUserToView);
+//adds a feedback message display that indicates errors or succesfull actions
 app.use(passFeedbackToView);
 
 
@@ -72,7 +73,7 @@ const startServers = async () => {
         await mongoose.connect(process.env.MONGODB_URI);
         console.log("Database connection established");
 
-
+ 
 
     } catch (error) {
         console.log(error);
