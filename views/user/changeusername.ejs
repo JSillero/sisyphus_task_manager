@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisyphus
+  </title>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/css/change-profile-values.css">
+
+</head>
+
+<body>
+  <%-include("../partials/header.ejs")%>
+  <main>
+    <h2>Change username</h2>
+    <form method="post" action="/user/change/username?_method=PUT">
+      <label>
+        New username: <input type="text" name="username" id="username">
+      </label>
+
+      <input type="submit" value="Change username">
+    </form>
+
+    <%- include('../partials/footer.ejs') %>
+
+  </main>
+
+
+</body>
+
+</html>

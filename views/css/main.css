@@ -1,0 +1,152 @@
+@import url(https://fonts.googleapis.com/css?family=Tangerine);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/* HEADER STYLES ______________________________ */
+h1 {
+    font-family: Tangerine, serif;
+    font-size: 4em;
+    text-align: center;
+}
+
+h2,h3 {
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+
+body {
+    font-family: Roboto;
+}
+
+main,
+nav {
+    padding-inline: 10px;
+}
+
+nav>form input[type="text"],
+nav>form input[type="password"] {
+    width: 102px;
+    text-align: center;
+    border: none;
+    /* border-right: 1px solid; */
+    box-shadow: 1px 1px;
+    padding: 5px;
+}
+
+nav>form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+nav>form input[type="submit"] {
+    /* position: relative; */
+    /* width: 80%; */
+    height: fit-content;
+    left: 10%;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    /* padding-block: 5%; */
+    /* background-color: #9fda94; */
+    box-shadow: 2px 2px black;
+    padding: 5px;
+}
+
+nav>form input[type="submit"]:active {
+    box-shadow: none;
+
+}   
+
+nav>div {
+    text-align: center;
+    margin-block: 20px;
+
+}
+
+.logged {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.feedback {
+    text-align: center;
+    text-shadow: 2px 2px 5px green;
+}
+
+.error {
+    text-align: center;
+    text-shadow: 2px 2px 5px red;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 70px;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    text-align: center;
+}
+
+footer>div {
+    margin-block: 10px;
+}
+
+
+/* Tablet styles */
+@media (min-width:601px) {
+    main {
+        margin-top: 50px;
+        width: 80%;
+        margin-inline: calc(10% - 30px);
+        background-color: whitesmoke;
+        padding: 10px 30px;
+        border-radius: 30px;
+        border: 5px lightgray solid;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+
+    }
+
+    nav>div {
+        width: 100%;
+    }
+
+    nav a {
+        font-weight: bold;
+    }
+
+    .button {
+        font-size: 1.3em;
+        padding: 12px;
+    }
+
+    body {
+        background-image: url("../img/background.jpg");
+        background-repeat: no-repeat;
+    }
+}
+
+@media (min-width:1000px) {
+    body {
+        background-size: 100% 200%;
+    }
+
+    main {
+        width: 65%;
+        margin-inline: calc(17.5% - 30px);
+    }
+}

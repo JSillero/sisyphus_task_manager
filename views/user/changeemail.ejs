@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisyphus</title>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="stylesheet" href="/css/change-profile-values.css">
+</head>
+
+<body>
+  <%-include("../partials/header.ejs")%>
+  <main>
+    <h2>Change email</h2>
+    <form method="post" action="/user/change/email?_method=put">
+      <label>
+        New email: <input type="text" name="email" id="email">
+      </label>
+      <input type="submit" value="Change email">
+    </form>
+    <%-include("../partials/footer.ejs")%>
+
+  </main>
+
+
+</body>
+
+</html>

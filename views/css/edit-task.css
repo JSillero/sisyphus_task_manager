@@ -1,0 +1,49 @@
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+
+form input,
+form select,
+textarea {
+    display: block;
+    margin: 0 auto;
+    margin-block: 5px;
+}
+
+form label {
+    margin: 5px 15px
+}
+
+input[type="submit"] {
+
+    width: 50%;
+    align-self: center;
+    /* position: relative; */
+    /* width: 80%; */
+    height: fit-content;
+    left: 10%;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    /* padding-block: 5%; */
+    /* background-color: #9fda94; */
+    box-shadow: 2px 2px black;
+    padding: 5px;
+    margin-block: 15px;
+}
+
+input[type="submit"]:active {
+    box-shadow: none;
+    
+}
+
+@media (min-width:1000px) {
+    input[type="submit"] {
+        width: 200px;
+    }
+}

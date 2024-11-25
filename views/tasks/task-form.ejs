@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisyphus</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/edit-task.css">
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('../partials/header') %>
+  <main>
+    <h2>New Task</h2>
+    <form action="/tasks/new" method="post">
+      <label>Name:
+        <input type="text" name="name" id="task-name-input">
+      </label>
+      <label>Description:
+        <textarea type="text" name="description" id="task-description-input"></textarea>
+      </label>
+      <label>Priority:
+        <select name="priority" id="task-priority-select">
+          <option value="1">Urgent</option>
+          <option value="2">High</option>
+          <option value="3">Medium</option>
+          <option value="4">Low</option>
+          <option value="5">Lax</option>
+        </select>
+      </label>
+      <label>Time period to refresh:
+        <select name="renewPeriod" id="task-priority-select">
+          <option value="Not Repeating">Not Repeating</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Weekly">Weekly</option>
+          <option value="Daily">Daily</option>
+        </select>
+      </label>
+     <!--  <label>
+        TAGS to be implemented
+      </label> -->
+      <input type="submit" value="Create Task">
+    </form>
+    <%- include('../partials/footer') %>
+
+  </main>
+
+</body>
+
+</html>

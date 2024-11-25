@@ -1,0 +1,43 @@
+h2 {
+    text-align: center;
+}
+
+input {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+    align-items: center;
+}
+
+input[type="submit"] {
+    /* position: relative; */
+    /* width: 80%; */
+    height: fit-content;
+    left: 10%;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    /* padding-block: 5%; */
+    /* background-color: #9fda94; */
+    box-shadow: 2px 2px black;
+    padding: 5px;
+    margin-top: 25px;
+    width: 150px;
+}
+
+nav>form input[type="submit"]:active {
+    box-shadow: none;
+
+}
+
+div {
+    text-align: center;
+}
+
+.error {
+    color: red;
+}

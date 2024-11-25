@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisyphus</title>
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/edit-task.css">
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('../partials/header') %>
+  <main>
+    <h2>Edit task</h2>
+    <form action="/tasks/<%= task._id %>/edit?_method=PUT" method="post">
+      <label>Name:
+        <input type="text" name="name" id="task-name-input" value="<%=task.name%>">
+      </label>
+      <label>Description:
+        <textarea type="text" name="description" id="task-description-input"> <%=task.description%></textarea>
+      </label>
+      <label>Priority:
+        <select name="priority" id="task-priority-select">
+          <option <%=(task.priority == 1)?"selected='selected'":"" %> value="1">Urgent</option>
+          <option <%=(task.priority == 2)?"selected='selected'":"" %>value="2">High</option>
+          <option <%=(task.priority == 3)?"selected='selected'":"" %>value="3">Medium</option>
+          <option <%=(task.priority == 4)?"selected='selected'":"" %>value="4">Low</option>
+          <option <%=(task.priority == 5)?"selected='selected'":"" %>value="5">Lax</option>
+        </select>
+      </label>
+     <!--  <label>
+        TAGS to be implemented
+      </label> -->
+      <label>Time period to refresh
+        <select name="renewPeriod" id="task-priority-select">
+          <option <%=(task.renewPeriod == 'Not Repeating')?"selected='selected'":"" %> value="Not Repeating">Not Repeating</option>
+          <option <%=(task.renewPeriod == 'Monthly')?"selected='selected'":"" %> value="Monthly">Monthly</option>
+          <option <%=(task.renewPeriod == 'Weekly')?"selected='selected'":"" %> value="Weekly">Weekly</option>
+          <option <%=(task.renewPeriod == 'Daily')?"selected='selected'":"" %> value="Daily">Daily</option>
+        </select>
+      </label>
+      <input type="submit" value="Edit Task">
+    </form>
+
+    <%- include('../partials/footer.ejs') %>
+  </main>
+</body>
+
+</html>

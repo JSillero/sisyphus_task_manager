@@ -1,0 +1,46 @@
+<header>
+  <a href="/">
+    <h1>
+      Sisyphus
+    </h1>
+  </a>
+</header>
+<nav <%= (user)?"class=logged":"" %>>
+  <% if (user) { %>
+  <p>
+    <a href="/tasks">All Tasks</a>
+  </p>
+  </p>
+  <p>
+    <a href="/tasks/new">New Task</a>
+  </p>
+ <!--  <p>
+    Groups
+  </p> -->
+  <p>
+    <a href="/user/profile">Profile: <%= user.username %></a>
+  </p>
+
+  <p>
+    <a href="/auth/log-out">Sign out</a>
+  </p>
+  <% } else { %>
+  <%- include('./log-in') %>
+  <div>
+    <a href="/auth/sign-up">Sign up</a>
+  </div>
+  <%} %>
+</nav>
+<div>
+  <% if (feedback ) { %>
+  <div class="feedback">
+    <%= feedback %>
+  </div>
+  <% } %>
+
+  <% if (error ) { %>
+  <div class="error">
+    <%= error %>
+  </div>
+  <% } %>
+</div>

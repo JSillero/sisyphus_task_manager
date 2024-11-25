@@ -1,0 +1,43 @@
+h2 {
+    text-align: center;
+}
+
+.task {
+    padding: 0px 15px;
+    margin-bottom: 50px;
+    border: solid grey 1px;
+    border-radius: 20px;
+
+
+}
+
+.task form {
+    text-align: center;
+}
+
+.button {
+    /* position: relative; */
+    /* width: 80%; */
+    height: fit-content;
+    left: 10%;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    /* padding-block: 5%; */
+    /* background-color: #9fda94; */
+    box-shadow: 2px 2px black;
+    padding: 5px;
+}
+
+.button:active {
+    box-shadow: none;
+
+}
+
+
+/* Tablet styles */
+@media (min-width:801px) {
+    .task {
+        background-color: white;
+    }
+}

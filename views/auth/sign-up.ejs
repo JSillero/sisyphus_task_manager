@@ -1,0 +1,36 @@
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="/css/main.css">
+   <link rel="stylesheet" href="/css/sign-up.css">
+   <script src="/scripts/sing-up.js"></script>
+
+   <title>Sisyphus</title>
+
+ </head>
+
+ <body>
+   <% include("../partials/header.ejs") %>
+
+   <main>
+
+     <form action="/auth/sign-up" method="post">
+       <h2>Sign Up</h2>
+       <input type="text" name="username" id="username" placeholder="Username">
+       <input type="password" name="password" id="password" placeholder="Password">
+       <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Repeat Password">
+       <input type="text" name="email" id="email" placeholder="E-mail">
+       <input type="submit" value="Sign Up" />
+     </form>
+     <div id="sign-up-error" class="error"></div>
+
+     <%- include('../partials/footer.ejs') %>
+   </main>
+
+
+ </body>
+
+ </html>

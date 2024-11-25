@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sisyphus</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/profile.css">
+
+</head>
+
+<body>
+  <%-include("../partials/header.ejs")%>
+  <main>
+    <h2>Profile page</h2>
+    <div>Username: <%= user.username %>
+      <p><a href="change/username">Change username</a></p>
+    </div>
+    <div>
+      Mail: <%= user.mail %>
+      <p><a href="change/email">Change email</a></p>
+
+    </div>
+    <div>
+      <p><a href="change/password">Change password</a></p>
+    </div>
+    <%-include("../partials/footer.ejs")%>
+  </main>
+
+
+</body>
+
+</html>
