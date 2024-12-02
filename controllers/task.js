@@ -10,8 +10,14 @@ const ObjectId = require('mongodb').ObjectId;
 /* Read */
 router.get("/", async (req, res) => {
 
-    let tasks = await Task.find({ 'owner': ObjectId.createFromHexString(req.session.user._id) });
+    let tasks = await Task.find({ 'owner': ObjectId.createFromHexString(req.session.user._id) ,'status':'Active'});
     res.render("./tasks/task-list.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
+})
+
+router.get("/filter", async (req, res) => {
+
+    let tasks = await Task.find({ 'owner': ObjectId.createFromHexString(req.session.user._id) });
+    res.render("./tasks/task-filter.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
 })
 
 /* Create */

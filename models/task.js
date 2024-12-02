@@ -26,7 +26,7 @@ const taskSchema = new mongoose.Schema({
     max: 5,
   },
   tags: [{
-    type: [mongoose.Types.ObjectId],
+    type: [mongoose.Schema.Types.ObjectId],
     ref: 'User',
 
   }],
@@ -44,7 +44,7 @@ const taskSchema = new mongoose.Schema({
     type: Date,
   },
   owner: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },

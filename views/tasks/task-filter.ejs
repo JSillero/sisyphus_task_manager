@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/list.css">
+
+
+  <title>Sisyphus</title>
+</head>
+
+<body>
+  <%- include("../partials/header.ejs") %>
+  <% arrayPriority =['Urgent','High','Normal','Low','Lax'];
+  console.log(tasks);%>
+  <main>
+    <div class="all_tasks">
+      <div>
+        <h3>Options</h3>
+
+      </div>
+
+      <h2>Filtered tasks</h2>
+
+      <%
+      
+      if (tasks.length) {%>
+      <%tasks.sort(function (a, b) {
+        return ('' + a.status).localeCompare(b.status);
+    }).forEach(task => {%>
+      <div class="task <%= task.status %> <%=arrayPriority[task.priority + 1]%>">
+        <p><b> <%=task.name %> </b> </p>
+        <p> <%=task.description %> </p>
+        <p>Priority <%=arrayPriority[task.priority + 1]%></p>
+        <p><a href="/tasks/<%= task._id %>/edit"> Edit task</a></p>
+
+        <% if (task.status == "Active") {%>
+        <p>
+        <form action="/tasks/<%= task._id %>/complete?_method=PUT" method="post"><input class="button" type="submit" value="COMPLETE"> </form>
+        </p>
+        <%}else if(task.status == "Completed"){ %>
+        <p>
+        <form action="/tasks/<%= task._id %>/delete?_method=DELETE" method="post"><input class="button" type="submit" value="Delete Task"> </form>
+        </p>
+        <%}%>
+
+      </div>
+      <%});%>
+        <%} else {%>
+        <p>There are no tasks </p>
+        <%}%>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+  </main>
+
+
+</body>
+
+</html>
