@@ -28,7 +28,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(morgan('dev'));
 app.use(flash());
 // Set direction for styles
-app.use(express.static(path.join(__dirname, 'views')));
+//app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static("public"));
 
 
 //session manager
