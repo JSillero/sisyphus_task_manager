@@ -13,10 +13,21 @@
  </head>
 
  <body>
-   <% include("../partials/header.ejs") %>
-
+   
    <main>
-
+    <div>
+      <% if (feedback ) { %>
+      <div class="error">
+        <%= feedback %>
+      </div>
+      <% } %>
+    
+      <% if (error ) { %>
+      <div class="error">
+        <%= error %>
+      </div>
+      <% } %>
+    </div> 
      <form action="/auth/sign-up" method="post">
        <h2>Sign Up</h2>
        <input type="text" name="username" id="username" placeholder="Username">

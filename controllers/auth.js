@@ -6,8 +6,6 @@ const User = require("../models/user.js");
 //                          LOG IN
 router.post("/log-in", async (req, res) => {
 
-    console.log("something");
-
     // First, get the user from the database
     console.log(req.body.username);
     const userInDatabase = await User.findOne({ username: req.body.username });
@@ -28,9 +26,6 @@ router.post("/log-in", async (req, res) => {
 
     }
 
-    // There is a user AND they had the correct password. Time to make a session!
-    // Avoid storing the password, even in hashed format, in the session
-    // If there is other data you want to save to `req.session.user`, do so here!
     req.session.user = {
         username: userInDatabase.username,
         _id: userInDatabase._id
@@ -41,19 +36,19 @@ router.post("/log-in", async (req, res) => {
 
 //                                     SIGN  UP
 router.get("/sign-up", async (req, res) => {
-    res.render("auth/sign-up.ejs")
+    res.render("auth/sign-up.ejs", {  error: req.flash('error') })
 });
 router.post("/sign-up", async (req, res) => {
 
     if (req.body.password !== req.body.confirmPassword) {
         req.flash('feedback', 'Password and Confirm Password must match.');
-        return res.redirect("/sign-up");
+        return res.redirect("/auth/sign-up");
     }
 
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
-        req.flash('feedback', '"Username already taken.');
-        return res.redirect("/sign-up");
+        req.flash('feedback', 'Username already taken.');
+        return res.redirect("/auth/sign-up");
     }
 
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);

@@ -9,25 +9,25 @@ const ObjectId = require('mongodb').ObjectId;
 
 /* Read */
 router.get("/", async (req, res) => {
-
+    console.log(req.session)
     let tasks = await Task.find({ 'owner': ObjectId.createFromHexString(req.session.user._id) ,'status':'Active'});
-    res.render("./tasks/task-list.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
+    res.render("tasks/task-list.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
 })
 
 router.get("/filter", async (req, res) => {
 
     let tasks = await Task.find({ 'owner': ObjectId.createFromHexString(req.session.user._id) });
-    res.render("./tasks/task-filter.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
+    res.render("tasks/task-filter.ejs", { tasks: tasks, feedback: req.flash('feedback'), error: req.flash('error') });
 })
 
 /* Create */
 router.get("/new", (req, res) => {
-    res.render("./tasks/task-form.ejs", { feedback: req.flash('feedback'), error: req.flash('error') });
+    res.render("tasks/task-form.ejs", { feedback: req.flash('feedback'), error: req.flash('error') });
 })
 
 router.post("/new", async (req, res) => {
     try {
-        req.body.owner = req.session.user._id
+        req.body.owner = req.session.user._id;
         const task = await Task.create(req.body);
         req.flash('feedback', `${task.name} created!`);
         res.redirect("/tasks/new");
@@ -40,7 +40,7 @@ router.post("/new", async (req, res) => {
 /* Edit */
 router.get("/:taskId/edit", async (req, res) => {
     let task = await Task.findById(req.params.taskId);
-    res.render("./tasks/task-edit.ejs", { task: task, feedback: req.flash('feedback'), error: req.flash('error') });
+    res.render("tasks/task-edit.ejs", { task: task, feedback: req.flash('feedback'), error: req.flash('error') });
 })
 
 router.put("/:taskId/edit", async (req, res) => {
@@ -48,8 +48,9 @@ router.put("/:taskId/edit", async (req, res) => {
         let task = await Task.findByIdAndUpdate(req.params.taskId, req.body);
         task = await Task.findById(req.params.taskId);
         req.flash('feedback', 'Task edited succesfully.');
-        res.render(`/tasks/${req.params.taskId}/edit`);
+        res.redirect(`/tasks/${req.params.taskId}/edit`);
     } catch (error) {
+        console.log(error)
         req.flash('error', error.message);
         res.redirect(`/tasks/${req.params.taskId}/edit`);
     }

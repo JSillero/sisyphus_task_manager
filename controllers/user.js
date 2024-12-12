@@ -14,10 +14,12 @@ router.get('/change/username', (req, res) => {
 })
 
 router.put('/change/username', async (req, res) => {
-    req.body.username = req.body.username;
     try {
         let user = await User.findByIdAndUpdate(req.session.user._id, req.body);
-        req.session.user = { username: req.body.username, };
+        req.session.user = {
+            username: req.body.username,
+            _id: req.session.user._id
+        };
         return res.redirect(`/user/profile?feedback=Username changed succesfully to: ${req.body.username}`);
     } catch (error) {
         return res.render(`user/changeusername.ejs`, { error: error.errors });
@@ -32,6 +34,8 @@ router.put('/change/password', async (req, res) => {
 
     try {
         if (req.body.password = req.body.confirmpassword) {
+            const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+            req.body.password = hashedPassword;
             let user = await User.findByIdAndUpdate(req.session.user._id, req.body);
             return res.redirect(`/user/profile?feedback=Password changed sucessfully!`);
         } else {
@@ -48,7 +52,7 @@ router.get('/change/email', (req, res) => {
 })
 
 router.put('/change/email', async (req, res) => {
-     try {
+    try {
         let user = await User.findByIdAndUpdate(req.session.user._id, req.body);
         return res.redirect(`/user/profile?feedback=Email changed succesfully to: ${req.body.email}`);
     } catch (error) {
