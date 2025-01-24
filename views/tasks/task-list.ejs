@@ -26,10 +26,10 @@
       <%tasks.sort(function (a, b) {
         return ('' + a.status).localeCompare(b.status);
     }).forEach(task => {%>
-      <div class="task <%= task.status %> <%=arrayPriority[task.priority + 1]%>">
-        <p><b> <%=task.name %> </b> </p>
-        <p> <%=task.description %> </p>
-        <p>Priority <%=arrayPriority[task.priority + 1]%></p>
+      <div class="task <%= task.status %> <%=arrayPriority[task.priority]%>">
+        <p><b><%=task.name %></b></p>
+        <p><%=task.description %></p>
+        <p>Priority <%=arrayPriority[task.priority -1]%></p>
         <p><a href="/tasks/<%= task._id %>/edit"> Edit task</a></p>
 
         <% if (task.status == "Active") {%>

@@ -5,5 +5,5 @@ const passFeedbackToView = (req, res, next) => {
         next();
     }
 };
-
+/* TODO RENAME THIS MIDDLEWARE AND IMPLEMENT IT PROPERLY */
 module.exports = passFeedbackToView;

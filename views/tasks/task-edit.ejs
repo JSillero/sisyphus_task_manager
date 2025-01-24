@@ -20,13 +20,13 @@
         <input type="text" name="name" id="task-name-input" value="<%=task.name%>">
       </label>
       <label>Description:
-        <textarea type="text" name="description" id="task-description-input"> <%=task.description%></textarea>
+        <textarea type="text" name="description" id="task-description-input"><%=task.description%></textarea>
       </label>
       <label>Priority:
         <select name="priority" id="task-priority-select">
           <option <%=(task.priority == 1)?"selected='selected'":"" %> value="1">Urgent</option>
           <option <%=(task.priority == 2)?"selected='selected'":"" %>value="2">High</option>
-          <option <%=(task.priority == 3)?"selected='selected'":"" %>value="3">Medium</option>
+          <option <%=(task.priority == 3)?"selected='selected'":"" %>value="3">Normal</option>
           <option <%=(task.priority == 4)?"selected='selected'":"" %>value="4">Low</option>
           <option <%=(task.priority == 5)?"selected='selected'":"" %>value="5">Lax</option>
         </select>
