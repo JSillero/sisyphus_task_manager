@@ -17,9 +17,7 @@ const tagSchema = new mongoose.Schema({
     required: true,
   },
 
-
-
 });
 
-const Tag = mongoose.model("Tag", userSchema);
+const Tag = mongoose.model("Tag", tagSchema);
 module.exports = Tag;

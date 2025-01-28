@@ -6,28 +6,28 @@
 
    <link rel="stylesheet" href="/css/main.css">
    <link rel="stylesheet" href="/css/sign-up.css">
-   <script src="/scripts/sing-up.js"></script>
-
+   <!-- <script src="/scripts/sing-up.js"></script>
+ -->
    <title>Sisyphus</title>
 
  </head>
 
  <body>
-   
+
    <main>
-    <div>
-      <% if (feedback ) { %>
-      <div class="error">
-        <%= feedback %>
-      </div>
-      <% } %>
-    
-      <% if (error ) { %>
-      <div class="error">
-        <%= error %>
-      </div>
-      <% } %>
-    </div> 
+     <div>
+       <% if (feedback ) { %>
+       <div class="feedback">
+         <%= feedback %>
+       </div>
+       <% } %>
+
+       <% if (error ) { %>
+       <div class="error">
+         <%= error %>
+       </div>
+       <% } %>
+     </div>
      <form action="/auth/sign-up" method="post">
        <h2>Sign Up</h2>
        <input type="text" name="username" id="username" placeholder="Username">

@@ -36,30 +36,37 @@ router.post("/log-in", async (req, res) => {
 
 //                                     SIGN  UP
 router.get("/sign-up", async (req, res) => {
-    res.render("auth/sign-up.ejs", {  error: req.flash('error') })
+    res.render("auth/sign-up.ejs", { error: req.flash('error'), feedback: req.flash('feedback') })
 });
 router.post("/sign-up", async (req, res) => {
 
     if (req.body.password !== req.body.confirmPassword) {
         req.flash('feedback', 'Password and Confirm Password must match.');
-        return res.redirect("/auth/sign-up");
+        res.render("auth/sign-up.ejs", { error: req.flash('error'), feedback: req.flash('feedback') })
+
     }
 
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
         req.flash('feedback', 'Username already taken.');
-        return res.redirect("/auth/sign-up");
+        res.render("auth/sign-up.ejs", { error: req.flash('error'), feedback: req.flash('feedback') })
+
     }
 
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     req.body.password = hashedPassword;
 
     // validation logic
-    const user = await User.create(req.body);
-    req.flash('feedback', `Thanks for signing up ${user.username}`);
+    try {
+        const user = await User.create(req.body);
+        req.flash('feedback', `Thanks for signing up ${user.username}`);
+        res.redirect("/");
+    } catch (error) {
+        console.dir(error);
 
-    console.log();
-    res.redirect("/");
+        req.flash('feedback', (error.code == 11000 ? "Email already in use." : error._message));//11000 error code could be for any repeated field but in this case the name is managed before 
+        res.render("auth/sign-up.ejs", { error: req.flash('error'), feedback: req.flash('feedback') })
+    }
 
 });
 
